@@ -1,0 +1,1572 @@
+/* Modern Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #2B3A67;
+  --primary-dark: #1a2544;
+  --secondary: #766DC1;
+  --accent: #00E6C3;
+  --emergency: #FF4365;
+  --background: #f8fafc;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --card-shadow: 
+    0 10px 30px -5px rgba(43, 58, 103, 0.15),
+    0 5px 15px -3px rgba(43, 58, 103, 0.1);
+  --text: #1e293b;
+  --text-light: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  background: 
+    linear-gradient(135deg, rgba(43, 58, 103, 0.05), rgba(118, 109, 193, 0.1)),
+    url('../assets/medical-bg-pattern.svg');
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* Glass morphism container */
+.container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 1rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Enhanced Cards */
+.category-card,
+.symptom-checker-card,
+.medication-reminder-card,
+.vitals-tracker-card,
+.chat-card {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.category-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Enhanced Buttons */
+.button,
+.general-chat-button,
+.symptom-checker-button,
+.med-reminder-button,
+.vitals-tracker-button,
+.analyze-button,
+.record-vitals-button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 0.875rem 1.75rem;
+  border-radius: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 6px -1px rgba(37, 99, 235, 0.1),
+    0 2px 4px -1px rgba(37, 99, 235, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Button hover effects */
+.button:hover,
+.general-chat-button:hover,
+.symptom-checker-button:hover,
+.med-reminder-button:hover,
+.vitals-tracker-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="number"],
+input[type="time"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.875rem 1.25rem;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.02),
+    inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 
+    0 0 0 3px rgba(37, 99, 235, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Headers */
+h1, h2, h3 {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Enhanced Footer */
+.app-footer {
+  background: linear-gradient(to right, #6C63FF, #4A47A3);
+  color: #e2e8f0;
+  padding: 3rem 2rem 1rem;
+  margin-top: 4rem;
+}
+
+.app-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+/* Animation for important elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.category-icon {
+  animation: float 6s ease-in-out infinite;
+  filter: drop-shadow(0 5px 15px rgba(43, 58, 103, 0.2));
+}
+
+/* Enhanced SOS Button */
+.sos-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+/* Modern Container with Dynamic Background */
+.container::before {
+  display: none;
+}
+
+/* Modern Header */
+.app-header {
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(108, 99, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Modern Cards */
+.category-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.category-card::before {
+  display: none;
+}
+
+/* Modern Buttons */
+.button,
+.general-chat-button,
+.symptom-checker-button,
+.med-reminder-button,
+.vitals-tracker-button,
+.analyze-button,
+.record-vitals-button,
+.add-med-button,
+.login-button,
+.profile-button,
+.sos-button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Button active effects */
+.button:active,
+.general-chat-button:active,
+.symptom-checker-button:active,
+.med-reminder-button:active,
+.vitals-tracker-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Specific button styles */
+.general-chat-button {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.symptom-checker-button {
+  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  color: white;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.med-reminder-button {
+  background: linear-gradient(135deg, #059669, #047857);
+  color: white;
+  flex: 1;
+}
+
+.vitals-tracker-button {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: white;
+  flex: 1;
+}
+
+.sos-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+.profile-button {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+}
+
+/* Quick actions container */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+/* Button icon styles */
+.button svg,
+.general-chat-button svg,
+.symptom-checker-button svg,
+.med-reminder-button svg,
+.vitals-tracker-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Disabled button styles */
+.button:disabled,
+.general-chat-button:disabled,
+.symptom-checker-button:disabled,
+.med-reminder-button:disabled,
+.vitals-tracker-button:disabled {
+  background: #e2e8f0;
+  color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Add ripple effect */
+.button::after,
+.general-chat-button::after,
+.symptom-checker-button::after,
+.med-reminder-button::after,
+.vitals-tracker-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.button:active::after,
+.general-chat-button:active::after,
+.symptom-checker-button:active::after,
+.med-reminder-button:active::after,
+.vitals-tracker-button:active::after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+/* Form buttons */
+.login-button,
+.analyze-button,
+.record-vitals-button,
+.add-med-button {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+/* Close buttons */
+.close-button {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-button:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Chat Interface */
+.chat-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  position: relative;
+  z-index: 1;
+}
+
+.chat-messages {
+  padding: 1.5rem;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  max-width: 80%;
+  position: relative;
+}
+
+.message.user {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 0.25rem;
+  box-shadow: 0 4px 15px -3px rgba(43, 58, 103, 0.2);
+}
+
+.message.bot {
+  background: white;
+  color: var(--text);
+  border-bottom-left-radius: 0.25rem;
+  box-shadow: var(--shadow);
+}
+
+/* Input Styling */
+.chat-input-container {
+  background: white;
+  padding: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.chat-input:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.category-card {
+  animation: fadeIn 0.5s ease forwards;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+}
+
+.card-content {
+  padding: 2.5rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #4b5563;
+  margin-top: 0.5rem;
+}
+
+.button-container {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.chat-container {
+  width: 100%;
+  max-width: 32rem;
+}
+
+.user-message {
+  text-align: right;
+  color: #2563eb;
+}
+
+.bot-message {
+  text-align: left;
+  color: #1f2937;
+}
+
+.welcome-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.main-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
+}
+
+.main-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.category-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+  transform: scale(1.1);
+}
+
+.category-title {
+  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.category-description {
+  color: #718096;
+  font-size: 0.875rem;
+}
+
+.subcategory-card {
+  max-width: 800px;
+  padding: 2rem;
+}
+
+.subcategory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.subcategory-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.subcategory-item:hover {
+  transform: translateY(-2px);
+}
+
+.subcategory-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.subcategory-name {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4a5568;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.chat-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  object-fit: contain;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.message-wrapper {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.message-wrapper.user {
+  justify-content: flex-end;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  background: #e2e8f0;
+}
+
+.message-wrapper.user .message-content {
+  background: #4299e1;
+  color: white;
+}
+
+.message-wrapper.bot .message-content {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.send-button {
+  padding: 0.75rem 1.5rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.send-button:hover {
+  background: #3182ce;
+}
+
+.send-button:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.nav-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 0.5rem 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 49;
+  margin-bottom: 1rem;
+}
+
+.nav-button {
+  padding: 0.5rem 1rem;
+  margin-right: 1rem;
+  background: transparent;
+  border: 2px solid #4299e1;
+  color: #4299e1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav-button:hover {
+  background: #4299e1;
+  color: white;
+}
+
+.header-right {
+  display: flex;
+  gap: 1rem;
+}
+
+.profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+}
+
+.profile-content {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.history-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+}
+
+.general-chat-card {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  z-index: 900;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.general-chat-button {
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+.chat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.close-chat-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #64748b;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.close-chat-button:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.close-chat-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Emergency Contact Styles */
+.emergency-contact-item {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1rem;
+}
+
+.call-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s;
+}
+
+.call-button:hover {
+  background: #16a34a;
+}
+
+/* Medical Tags */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.medical-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.medical-tag.allergy {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.medical-tag.condition {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+/* Symptom Checker Styles */
+.symptom-checker-card {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.symptom-button {
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.symptom-button.selected {
+  border-color: #4f46e5;
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.severity-slider {
+  margin: 1.5rem 0;
+}
+
+.severity-slider label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+}
+
+.analyze-button {
+  width: 100%;
+  padding: 1rem;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.analyze-button:hover {
+  background: #4338ca;
+}
+
+/* Medication Reminder Styles */
+.medication-reminder-card {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.add-medication-form {
+  display: grid;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.medication-item {
+  background: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.med-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.snooze-button {
+  background: #94a3b8;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+}
+
+.taken-button {
+  background: #22c55e;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+}
+
+/* Vital Signs Tracker Styles */
+.vitals-tracker-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.vital-input {
+  margin-bottom: 1.5rem;
+}
+
+.vital-input label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+.vital-input input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+}
+
+.record-vitals-button {
+  background: #2563eb;
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.record-vitals-button:hover {
+  background: #1d4ed8;
+}
+
+/* Footer Styles */
+.app-footer {
+  background: linear-gradient(to right, #6C63FF, #4A47A3);
+  color: #e2e8f0;
+  padding: 3rem 2rem 1rem;
+  margin-top: 4rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section {
+  padding: 1rem;
+}
+
+.footer-section h3 {
+  color: #60a5fa;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-section a {
+  color: #e2e8f0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-section a:hover {
+  color: #60a5fa;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  color: #e2e8f0;
+  transition: color 0.2s;
+}
+
+.social-icon:hover {
+  color: #60a5fa;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #334155;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.powered-by {
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.credits {
+  text-align: center;
+}
+
+/* Make footer responsive */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* Enhance main content area */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Enhanced primary action button */
+.chat-ai-button {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 1.25rem 2.5rem;
+  font-size: 1.25rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 10px 25px -5px rgba(37, 99, 235, 0.3),
+    0 8px 10px -6px rgba(37, 99, 235, 0.2);
+}
+
+.chat-ai-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 35px -10px rgba(37, 99, 235, 0.4),
+    0 10px 15px -8px rgba(37, 99, 235, 0.3);
+}
+
+/* Login Page Styles */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: 
+    linear-gradient(135deg, rgba(43, 58, 103, 0.05), rgba(118, 109, 193, 0.1)),
+    url('../assets/medical-bg-pattern.svg');
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 
+    0 20px 40px -5px rgba(43, 58, 103, 0.15),
+    0 8px 20px -3px rgba(43, 58, 103, 0.1);
+  border: 1px solid var(--glass-border);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  padding-left: 3rem;
+  border-radius: 12px;
+  border: 2px solid rgba(226, 232, 240, 0.8);
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.input-group svg {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 
+    0 0 0 3px rgba(37, 99, 235, 0.1),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.input-group input:focus + svg {
+  color: var(--primary);
+}
+
+.login-button {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 20px -3px rgba(43, 58, 103, 0.2),
+    0 4px 10px -2px rgba(43, 58, 103, 0.15);
+}
+
+.login-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.login-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.login-footer a:hover {
+  color: var(--secondary);
+}
+
+/* Social Login Buttons */
+.social-login {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.social-button {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 2px solid rgba(226, 232, 240, 0.8);
+  background: white;
+  color: var(--text);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.social-button:hover {
+  background: #f8fafc;
+  border-color: var(--primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 2rem;
+  }
+  
+  .login-title {
+    font-size: 1.75rem;
+  }
+  
+  .social-login {
+    flex-direction: column;
+  }
+}
+
+/* Clerk Customization */
+.clerk-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.clerk-root {
+  width: 100% !important;
+}
+
+.social-button {
+  width: 100% !important;
+  margin-bottom: 0.5rem !important;
+  padding: 0.75rem !important;
+  border-radius: 0.5rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  background: white !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+.social-button:hover {
+  background: #f8fafc !important;
+  transform: translateY(-1px) !important;
+}
+
+.login-button {
+  width: 100% !important;
+  padding: 0.75rem !important;
+  background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.login-button:hover {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2) !important;
+}
+
+.sign-out-button {
+  background-color: #f56565;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: background-color 0.3s ease;
+}
+
+.sign-out-button:hover {
+  background-color: #e53e3e;
+}
+/* Customize Clerk Sign-In appearance */
+.clerk-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.clerk-root {
+  width: 100% !important;
+  max-width: 400px; /* Adjust width as needed */
+  margin: 0 auto; /* Center the card */
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f0f4f8; /* Background color */
+}
+
+.login-card {
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px; /* Increase the max-width */
+  width: 100%; 
+}
+.clerk-root {
+  width: 100% !important;
+  max-width: 500px; /* Match the max-width of the card */
+  margin: 0 auto; /* Center the card */
+}
+
+.login-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.login-subtitle {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.login-button {
+  background: #2563eb;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-button:hover {
+  background: #1e4bb8;
+}
+
+/* Profile Styles */
+.profile-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--glass-bg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-button.active {
+  background: var(--primary);
+  color: white;
+}
+
+.personal-info {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.user-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-details {
+  flex: 1;
+}
+
+.medical-record {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.record-date {
+  color: var(--text-light);
+}
+
+.record-type {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.profile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: var(--text);
+}
+
+.profile-content {
+  padding: 1rem;
+  background: var(--glass-bg);
+  border-radius: 0.5rem;
+}
+
+/* Ensure proper spacing and alignment */
+.personal-info {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.medical-history {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+}
