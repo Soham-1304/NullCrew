@@ -1,12 +1,31 @@
 import React from "react";
-import MedicalRiskAnalyzer from "./MedicalRiskAnalyzer"; // Ensure the correct path
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-react";
+import MedicalRiskAnalyzer from "./pages/MedicalRiskAnalyzer";
+import Login from "./components/Login";
+import ErrorBoundary from './components/ErrorBoundary';
+import './styles/index.css';
 
-function App() {
+const App = () => {
+  const clerkPubKey = process.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
+
+  if (!clerkPubKey) {
+    throw new Error("Missing Publishable Key");
+  }
+
   return (
-    <div>
-      <MedicalRiskAnalyzer />
-    </div>
+    <ClerkProvider publishableKey={clerkPubKey}>
+      <ErrorBoundary>
+        <div className="app-container">
+          <SignedOut>
+            <Login />
+          </SignedOut>
+          <SignedIn>
+            <MedicalRiskAnalyzer />
+          </SignedIn>
+        </div>
+      </ErrorBoundary>
+    </ClerkProvider>
   );
-}
+};
 
 export default App;
