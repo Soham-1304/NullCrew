@@ -18,7 +18,7 @@ Dataset: Disease-Symptom dataset from Kaggle
 Try It Out
 
 Experience the Medical Risk Assessment tool in action!
-👉 Click here to try it out
+👉 [Click here to try it out ](https://hackthon-kohl.vercel.app/)
 
 Instructions:
 Enter symptoms into the text area in great detail (e.g., "I have a fever and sore throat").
