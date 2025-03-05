@@ -389,7 +389,7 @@ main_keywords = symptoms = [
 
 def call_gemini_api(user_input):
     # Configure the API key
-    genai.configure(api_key='AIzaSyDKlYAQAvU5JCVuAS56kLOmkPa9pZSZa7c')
+    genai.configure(api_key='API KEY')
     
     # Initialize the model
     model = genai.GenerativeModel('gemini-1.5-pro')
